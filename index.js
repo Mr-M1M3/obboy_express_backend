@@ -4,7 +4,7 @@ import { router } from "./src/routes/index.js"
 
 const app = express()
 app.use(APP_CONFIG.API_URL_BASE, router)
-
+app.use(express.json())
 try {
     app.listen(APP_CONFIG.PORT, () => {
         console.log(`Successfully started server on port : ${APP_CONFIG.PORT}`)
