@@ -1,12 +1,12 @@
 import Prisma from '@prisma/client'
 const { PrismaClient } = Prisma
-const prisma = new PrismaClient()
+const _prisma = new PrismaClient()
 
 var _connected = false
 
 export const connectDB = async () => {
     return new Promise((resolve, reject) => {
-        prisma.$connect()
+        _prisma.$connect()
             .then((data) => {
                 _connected = true
                 resolve({
@@ -26,7 +26,7 @@ export const connectDB = async () => {
 
 export const disconnectDB = async () => {
     return new Promise((resolve, reject) => {
-        prisma.$disconnect()
+        _prisma.$disconnect()
             .then((data) => {
                 _connected = false
                 resolve({
@@ -45,3 +45,5 @@ export const disconnectDB = async () => {
 }
 
 export const connectionState = () => _connected
+
+export const getInstance = () => _prisma
