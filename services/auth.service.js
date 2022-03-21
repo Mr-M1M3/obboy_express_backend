@@ -1,4 +1,4 @@
-import { getInstance } from "../datalayer/DatabaseInstance"
+import { getInstance } from "../datalayer/DatabaseInstance.js"
 import crypto from "crypto"
 
 
@@ -44,7 +44,7 @@ export const authenticateEmailAndPassword =
             })
                 .then((data) => {
                     console.log(data)
-                    var user = data[0]
+                    var user = data
                     _matchPassword(password, user.password_hash, user.password_salt)
                         .then(_ => resolve({
                             success: true,

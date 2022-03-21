@@ -1,18 +1,18 @@
-import express from "express";
-import CONFIG from "./config/server.config.js";
-import router from "./routes/main.routes.js";
-import { server_error, not_found } from './utils/errors.js';
-import { connectDB } from "./datalayer/DatabaseInstance.js";
+import express from "express"
+import CONFIG from "./config/server.config.js"
+import router from "./routes/api.routes.js"
+import { server_error, not_found } from './utils/errors.js'
+import { connectDB } from "./datalayer/DatabaseInstance.js"
 
-const app = express();
+const app = express()
 
 connectDB().then(data => {
     if (data.success) {
         console.log("Connected to DB sucessfully")
 
-        app.use(router);
+        app.use(router)
         // 404 handler
-        app.use(not_found);
+        app.use(not_found)
         // internal server error handler
         app.use(server_error)
 
