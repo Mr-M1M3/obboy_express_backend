@@ -10,7 +10,7 @@ connectDB().then(data => {
     if (data.success) {
         console.log("Connected to DB sucessfully")
 
-        app.use(router)
+        app.use(CONFIG.API_URL_BASE, router)
         // 404 handler
         app.use(not_found)
         // internal server error handler
