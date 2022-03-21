@@ -1,7 +1,7 @@
 import express from "express";
-import CONFIG from "./src/config/server.config.js";
-import router from "./src/routes/main.routes.js";
-import {server_error, not_found} from './src/lib/errors.js';
+import CONFIG from "./config/server.config.js";
+import router from "./routes/main.routes.js";
+import {server_error, not_found} from './lib/errors.js';
 
 const app = express();
 
