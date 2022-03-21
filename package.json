@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",
@@ -25,13 +25,24 @@
     "url": "https://github.com/obboy/obboy_express_backend/issues"
   },
   "homepage": "https://github.com/obboy/obboy_express_backend#readme",
+  "prisma": {
+    "schema": "datalayer/prisma/schema.prisma"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "dependencies": {
+    "@prisma/client": "^3.11.0",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mongodb": "^4.4.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "prisma": "^3.11.0"
   }
 }
