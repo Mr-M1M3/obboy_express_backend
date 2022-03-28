@@ -2,16 +2,21 @@ import {
     authenticateEmailAndPassword,
     createUserWithEmailAndPassword
 } from "../services/auth.service.js";
-
+import { createToken } from "../services/token.service.js";
 export const login = async (req, res) => {
     const data = req.body
     if (data.email != null && data.email != ""
         && data.password != null && data.password != "") {
         authenticateEmailAndPassword(data)
             .then(data => {
+                var accessToken = createToken(data.data.id)
                 res.send({
                     error: null,
-                    data: data
+                    data: {
+                        success: true,
+                        accessToken: accessToken,
+                        refreshToken: null
+                    }
                 })
             })
             .catch(err => {
